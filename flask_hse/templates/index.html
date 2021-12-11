@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html>
+    <head>
+        <title>My Web Server</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?20211208">
+    </head>
+<body>
+<div>
+
+    <div class="vertical-menu">
+      <a href="#" class="active">Home</a>
+        {% for text, link in links.items() %}
+            <a href="{{ link }}">{{ text }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% if html_string != None  %}
+    <div style="margin-left:20%;margin-top:3%;border: 2px;">
+        {{ html_string | safe }}
+    </div>
+{% endif %}
+
+{% if image != None  %}
+    <div style="margin-left:20%;margin-top:3%;border: 2px;">
+        <img alt="{{ image[1] }}" src="{{ url_for('static', filename='tmp/' + image) }}?{{ code }}" style="max-width:1000px;border: 5px solid #555;">
+    </div>
+{% endif %}
+
+</body>
+</html>
